@@ -2,13 +2,19 @@
 A macro for automatically generating Rust structs and enums from Dhall types. Dhall values of these types can then be deserialized into Rust with the `serde_dhall` crate.  
 Currently customizability is limited and the exact Rust generated is very subject to change, so it is only recommended to use this crate for prototyping while your Dhall schemas are changing often.
 
-# Usage
+## Usage
 Create serialization-compatible Rust types in the following `mod` for the Dhall types contained in a given folder.
 Hand-written `impl`s can be included in the `mod` block.
 By default, the generated types are named as the Pascal case of the Dhall file they are defined in (e.g. `my_type.dhall` -> `MyType`), but this can be overwritten (see Dhall metadata).
 Any sub-unions or records contained within these files will be assigned an arbitrary name by default (which may change between compiles).
 
-# Arguments
+### Example `my_dhall_stuff.rs`
+``` rust
+    #[serde_dhall_typegen::dhall_types("./dhall/schema/")]
+    mod dhall { }
+```
+
+## Arguments
 
 * A string literal path to a directory of .dhall file(s)
 * Optional parameters in the form `name = literal`
@@ -20,12 +26,12 @@ Any sub-unions or records contained within these files will be assigned an arbit
     * `anonymous_enum_impl = bool` - Should member access functions be generated for anonymous enums? Defaults to `true`
     * `anonymous_struct_impl = bool` - Should member access functions be generated for anonymous structs? Defaults to `false`
 
-# Dhall Input
+## Dhall Input
 
 Each .dhall file in the specified directory will be evaluated and must return a record, a union, a [schema](https://docs.dhall-lang.org/tutorials/Language-Tour.html#record-completion),
 or a function taking a single `Type` parameter which returns one of the previous types.
 
-# Generic Types
+## Generic Types
 
 `dhall_types` supports generating types with a single type parameter when provided a Dhall file containing a function of type `Type -> Type`. 
 The type parameter will be named `T`. Like non-generic types, member types will be interpreted as instances of generic types if possible. For example,  
@@ -58,7 +64,7 @@ The type parameter will be named `T`. Like non-generic types, member types will 
     }
 ```
 
-# Generated Functions
+## Generated Functions
 
 Anonymous enums have functions generated for each variant by default. If a variant `MyVariant` has an associated type `T`, the enum will have the following functions:
 ``` rust
@@ -78,7 +84,7 @@ fn my_field(&self) -> &T
 fn my_field_mut(&mut self) -> &mut T
 ```
 
-# Dhall Metadata
+## Dhall Metadata
 
 Because Dhall and Rust have fundamentally different type systems, it may be necessary to make some non-functional changes in the Dhall to generate Rust types as you intend.
 Dhall's types are [structural](https://en.wikipedia.org/wiki/Structural_type_system), so two types with the same structure in two separate files are the same type as far as Dhall is concerned. This is considered an error when generating
@@ -148,8 +154,8 @@ You can use `let` bindings to reduce the verbosity:
     let Jkl = { j: Bool, k: Bool, l: Bool } //\\ (rust_struct <Jkl>)
 ```
 
-# Example
-## Before
+## Example
+### Before
 
 ### ./dhall/schema/person.dhall
 
@@ -177,7 +183,7 @@ You can use `let` bindings to reduce the verbosity:
     mod dhall { }
 ```
 
-## After
+### After
 
 ### ./src/dhall.rs (equivalent to)
 ```rust

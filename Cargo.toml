@@ -3,6 +3,10 @@ name = "serde_dhall_typegen"
 version = "0.1.0"
 authors = ["Colin Neville <colinjneville@gmail.com>"]
 edition = "2018"
+readme = "README.md"
+repository = "https://github.com/colinjneville/serde_dhall_typegen"
+license = "MIT OR Apache-2.0"
+keywords = ["serde", "serialization", "dhall"]
 
 [lib]
 proc-macro = true
