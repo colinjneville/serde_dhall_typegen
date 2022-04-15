@@ -1,0 +1,21 @@
+[package]
+name = "serde_dhall_typegen"
+version = "0.1.0"
+authors = ["Colin Neville <colinjneville@gmail.com>"]
+edition = "2018"
+
+[lib]
+proc-macro = true
+
+[dependencies]
+serde = "1.0.136"
+syn = "1.0.91"
+proc-macro2 = "1.0.37"
+quote = "1.0.17"
+convert_case = "0.5.0"
+pathdiff = "0.2.1"
+path-slash = "0.1.4"
+serde_dhall = "0.11.0"
+
+[dev-dependencies]
+trybuild = "1.0.56"

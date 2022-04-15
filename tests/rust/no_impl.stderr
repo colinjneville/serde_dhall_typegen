@@ -1,0 +1,10 @@
+error[E0599]: no method named `is_adult` found for enum `PersonAnon0` in the current scope
+ --> $DIR/no_impl.rs:9:41
+  |
+1 | / #[serde_dhall_typegen::dhall_types("../../../tests/dhall/schema/",
+2 | |     anonymous_enum_impl = false,
+3 | | )]
+  | |__- method `is_adult` not found for this
+...
+9 |           println!("{}", person.age_range.is_adult());
+  |                                           ^^^^^^^^ method not found in `PersonAnon0`
