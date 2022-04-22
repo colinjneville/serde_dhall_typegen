@@ -200,7 +200,7 @@ fn set_environment_variable() {
 /// Any sub-unions or records contained within these files will be assigned an arbitrary name by default (which may change between compiles).
 ///  
 /// ### Example `my_dhall_stuff.rs`
-/// ``` rust
+/// ```ignore
 ///     #[serde_dhall_typegen::dhall_types("./dhall/schema/")]
 ///     mod dhall { }
 /// ```
@@ -258,19 +258,19 @@ fn set_environment_variable() {
 /// # Generated Functions
 /// 
 /// Anonymous enums have functions generated for each variant by default. If a variant `MyVariant` has an associated type `T`, the enum will have the following functions:
-/// ``` rust
+/// ```ignore
 /// fn my_variant(&self) -> Option<&T>
 /// fn my_variant_mut(&mut self) -> Option<&mut T>
 /// fn into_my_variant(self) -> Result<T, Self>
 /// ```
 ///
 /// If the variant does not have an associated type, it will have the following function:
-/// ``` rust
+/// ```ignore
 /// fn is_my_variant(&self) -> bool
 /// ```
 ///
 /// If struct functions are enabled, a field `my_field` of type `T` will have the following functions:
-/// ``` rust
+/// ```ignore
 /// fn my_field(&self) -> &T
 /// fn my_field_mut(&mut self) -> &mut T
 /// ```
@@ -369,7 +369,7 @@ fn set_environment_variable() {
 /// ```
 ///
 /// ### ./src/dhall.rs
-/// ``` rust
+/// ```ignore
 ///     #[serde_dhall_typegen::dhall_types("./dhall/schema/")]
 ///     mod dhall { }
 /// ```
