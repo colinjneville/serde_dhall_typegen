@@ -15,7 +15,7 @@ use super::common::{chunk_size, chunk_start, index_chunk};
 ///
 /// For example, this would be illegal with a `Vec`:
 ///
-/// ```
+/// ```ignore
 /// use appendlist::AppendList;
 ///
 /// let list = AppendList::new();
