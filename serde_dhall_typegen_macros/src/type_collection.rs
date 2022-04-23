@@ -29,7 +29,7 @@ impl PrimitiveIdents {
             bool: Ident::new("bool", span),
             natural: Ident::new("u64", span),
             integer: Ident::new("i32", span),
-            double: Ident::new("f64", span),
+            double: Ident::new("::serde_dhall_typegen::OrderedF64", span),
             text: Ident::new("String", span),
             optional: Ident::new("Option", span),
             list: Ident::new("Vec", span),

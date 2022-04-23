@@ -580,3 +580,4 @@ fn dhall_types_internal(options: Options) -> Result<TokenStream, TokenStream> {
 
     typegen.tokenize()
 }
+
