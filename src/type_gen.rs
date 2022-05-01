@@ -177,7 +177,7 @@ impl<'a> TypeGen<'a> {
         let generic = if info.is_open_generic() { quote!(<#generic_parameter>) } else { TokenStream::new() };
         let impl_tokens = self.tokenize_struct_impl(context_ident, ident, info, r)?;
         Ok(quote!(
-        #[derive(Debug, Clone, Eq, PartialEq, Hash, ::serde::Serialize, ::serde::Deserialize)]
+        #[derive(Debug, Clone, Eq, PartialEq, Hash, ::serde::Serialize, ::serde::Deserialize, ::serde_dhall::StaticType)]
         pub struct #ident #generic {
             #tokens
         }
