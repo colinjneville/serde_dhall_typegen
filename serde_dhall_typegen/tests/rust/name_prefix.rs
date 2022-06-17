@@ -1,4 +1,4 @@
-#[serde_dhall_typegen::dhall_types("../../../tests/dhall/schema/")]
+#[serde_dhall_typegen::dhall_types("../../../serde_dhall_typegen/tests/dhall/schema/")]
 mod dhall { 
     impl Button {
         pub fn new(color: Color) -> Self {
@@ -24,4 +24,3 @@ fn main() {
         println!("It has a {:?} button!", button.color);
     }
 }
-
