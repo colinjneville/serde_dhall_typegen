@@ -247,7 +247,7 @@ impl<'a> TypeGen<'a> {
         };
         let impl_tokens = self.tokenize_struct_impl(context_ident, ident, info, r)?;
         Ok(quote!(
-        #[derive(Debug, Clone, Eq, PartialEq, Hash, ::serde::Serialize, ::serde::Deserialize)]
+        #[derive(Debug, Clone, Eq, PartialEq, Hash, ::serde::Serialize, ::serde::Deserialize, ::serde_dhall::StaticType)]
         pub struct #ident #generic {
             #tokens
         }
